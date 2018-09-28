@@ -157,6 +157,8 @@ module.exports = app => {
     let options = {};
     if (req.query.sort)
       options.sort = req.query.sort;
+    if (req.query.dir)
+      options.dir = req.query.dir;
     if (req.query.offset)
       options.offset = req.query.offset;
 
@@ -192,7 +194,8 @@ module.exports = app => {
       res.render('tags', render(req, {
         title: 'Tags',
         page: 'tags',
-        data: data
+        data: data,
+        query: req.query
       }));
     })
   });
