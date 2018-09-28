@@ -34,12 +34,13 @@ exports.all = (domain, options, fn) => {
   let skip = options.offset || 0;
   let sort = null
       , order = null
-      , allowedSort = ['clicked', 'opened', 'date']
+      , allowedSort = ['tag', 'clicked', 'opened', 'delivered', 'date']
       ;
   if (options.sort && allowedSort.indexOf(options.sort) != -1)
     sort = options.sort;
-  if (options.dir && options.dir == 'asc')
-    order = 1;
+  if (options.dir && options.dir == 'desc')
+    order = -1;
+  else order = 1;
 
   let qs = {limit: limit, skip: parseInt(skip), sort: {}};
   if (sort)
